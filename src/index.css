@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  /* Hide sidebar and navigation elements */
+  aside,
+  header,
+  .sidebar,
+  nav {
+    display: none !important;
+  }
+
+  main,
+  .main-content {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .card {
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Print Header Styles */
+  .print-header {
+    display: block !important;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: black !important;
+  }
+
+  .print-header h3 {
+    font-size: 14pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .print-header h2 {
+    font-size: 16pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .print-header p {
+    font-size: 10pt;
+    margin: 0;
+  }
+
+  .print-header-line {
+    border-bottom: 3px solid black;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  /* Specific Section Printing Logic using Visibility */
+  body.printing-section {
+    visibility: hidden;
+  }
+
+  body.printing-section .print-root,
+  body.printing-section .print-root *,
+  body.printing-section .print-header,
+  body.printing-section .print-header * {
+    visibility: visible;
+  }
+
+  body.printing-section .print-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  body.printing-section .print-root {
+    position: absolute;
+    top: 180px;
+    /* Adjust based on header height */
+    left: 0;
+    width: 100%;
+  }
+
+  /* Ensure tables look good */
+  table {
+    width: 100% !important;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    border: 1px solid #000 !important;
+    padding: 8px !important;
+  }
+}
+
+/* Default state for print header: hidden on screen */
+.print-header {
+  display: none;
+}
